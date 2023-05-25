@@ -222,16 +222,16 @@
   # The period starts when the last line of the file was, not the file ModTime.
   # Time strings like 2h (2 hours), 5m (5 minutes) can be used.
   <%- if @close_inactive -%>
-    <%- if @input_type =~ /(filestream)/ -%>
-    close.on_state_change.inactive: <%= @close_inactive %>
+    <%- if @input_type == 'filestream' -%>
+  close.on_state_change.inactive: <%= @close_inactive %>
     <%- else -%>
-    close_inactive: <%= @close_inactive %>
+  close_inactive: <%= @close_inactive %>
     <%- end -%>
   <%- end -%>
 
   # Close renamed closes a file handler when the file is renamed or rotated.
   # Note: Potential data loss. Make sure to read and understand the docs for this option.
-  <%- if @input_type =~ /(filestream)/ -%>
+  <%- if @input_type == 'filestream' -%>
   close.on_state_change.renamed: <%= @close_renamed %>
   <%- else -%>
   close_renamed: <%= @close_renamed %>
@@ -240,7 +240,7 @@
   # When enabling this option, a file handler is closed immediately in case a file can't be found
   # any more. In case the file shows up again later, harvesting will continue at the last known position
   # after scan_frequency.
-  <%- if @input_type =~ /(filestream)/ -%>
+  <%- if @input_type == 'filestream' -%>
   close.on_state_change.removed: <%= @close_removed %>
   <%- else -%>
   close_removed: <%= @close_removed %>
@@ -249,7 +249,7 @@
   # Closes the file handler as soon as the harvesters reaches the end of the file.
   # By default this option is disabled.
   # Note: Potential data loss. Make sure to read and understand the docs for this option.
-  <%- if @input_type =~ /(filestream)/ -%>
+  <%- if @input_type == 'filestream' -%>
   close.reader.eof: <%= @close_removed %>
   <%- else -%>
   close_eof: <%= @close_eof %>
