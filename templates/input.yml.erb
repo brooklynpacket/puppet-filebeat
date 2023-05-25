@@ -224,7 +224,7 @@
   <%- if @close_inactive -%>
     <%- if @input_type =~ /(filestream)/ -%>
     close.on_state_change.inactive: <%= @close_inactive %>
-    <%- else ->
+    <%- else -%>
     close_inactive: <%= @close_inactive %>
     <%- end -%>
   <%- end -%>
