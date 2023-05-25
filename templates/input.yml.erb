@@ -271,10 +271,10 @@
   # By default this option is disabled.
   # Note: Potential data loss. Make sure to read and understand the docs for this option.
   <%- if @close_timeout -%>
-    <%- if @input_type =~ /(filestream)/ -%>
-      close.reader.after_interval: <%= @close_timeout %>
+    <%- if @input_type == 'filestream' -%>
+  close.reader.after_interval: <%= @close_timeout %>
     <%- else -%>
-      close_timeout: <%= @close_timeout %>
+  close_timeout: <%= @close_timeout %>
     <%- end -%>
   <%- end -%>
   <%- # Everything below this can be applied to any input. -%>
